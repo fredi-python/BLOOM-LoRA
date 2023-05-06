@@ -18,18 +18,18 @@ from peft import (
 
 from huggingface_hub import login, HfFolder
 
+hf_token = input("Enter your HuggingFace token:\n")
+
 login(
-  token="", # ADD YOUR TOKEN HERE
+  token=f"{hf_token}", # ADD YOUR TOKEN HERE
   add_to_git_credential=True
 )
-
-hf_token = input("Enter your HuggingFace token:\n")
 
 # optimized for RTX 3090 and A100. For larger GPUs, increase some of these?
 MICRO_BATCH_SIZE = 4  # this could actually be 5 but i like powers of 2
 BATCH_SIZE = 128
 GRADIENT_ACCUMULATION_STEPS = BATCH_SIZE // MICRO_BATCH_SIZE
-EPOCHS = 3  # we don't always need 3 tbh
+EPOCHS = 2  # we don't always need 3 tbh
 LEARNING_RATE = 3e-4  # the Karpathy constant
 CUTOFF_LEN = 256  # 256 accounts for about 96% of the data
 LORA_R = 8
