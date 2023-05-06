@@ -23,6 +23,7 @@ login(
   add_to_git_credential=True
 )
 
+hf_token = input("Enter your HuggingFace token:\n")
 
 # optimized for RTX 3090 and A100. For larger GPUs, increase some of these?
 MICRO_BATCH_SIZE = 4  # this could actually be 5 but i like powers of 2
